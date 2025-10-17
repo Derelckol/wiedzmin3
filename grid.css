@@ -12,7 +12,7 @@
 html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--c-text);}
 .wrapper{width:100%;margin:0;padding:0;}
 
-/* ===== GRID (desktop) ===== */
+
 .grid{
   display:grid;
   grid-template-columns:var(--col-left) 1fr var(--col-right);
@@ -25,13 +25,13 @@ html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto
     "footer    footer   footer";
   gap:var(--gap);
   min-height:100vh;
-  align-content:start;             /* не стискай ряди догори */
+  align-content:start;            
 }
 
-/* ✦ важливо для уникнення «наїздів» усередині гріду */
+
 .header,.footer,.main,.aside,.asideLong,.asideTop,.footband{min-width:0;min-height:0}
 
-/* ===== HEADER / FOOTER ===== */
+
 .header{
   grid-area:header;
   background:var(--c-header);
@@ -40,7 +40,7 @@ html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto
   border-radius:8px;
 
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,var(--badge-w)); /* не даємо бейджу ламати ряд */
+  grid-template-columns:minmax(0,1fr) minmax(0,var(--badge-w)); 
   align-items:center;
   column-gap:12px;
 }
@@ -77,14 +77,14 @@ html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto
 .slogan :is(h1,h2,h3,h4,h5,h6),
 .footer-note :is(h1,h2,h3,h4,h5,h6){ margin:0; font:inherit; line-height:1.2; }
 
-/* ===== CONTENT BLOCKS ===== */
+
 .asideTop{grid-area:asideTop;background:var(--c-accent);padding:8px;border:1px solid var(--c-border);border-radius:6px;}
 .asideLong{grid-area:asideLong;background:var(--c-aside);padding:10px;border:1px solid var(--c-border);border-radius:6px;}
 .aside{grid-area:aside;background:var(--c-aside);padding:10px;border:1px solid var(--c-border);border-radius:6px;}
 .main{grid-area:main;background:var(--c-main);padding:16px;border:1px solid var(--c-border);border-radius:6px;}
 .footband{grid-area:footband;background:var(--c-accent);padding:10px;border:1px solid var(--c-border);border-radius:6px;}
 
-/* ===== MENUS & GALLERIES ===== */
+
 .menu{
   display:grid;
   grid-auto-rows:minmax(40px,auto);
@@ -110,27 +110,26 @@ html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto
 .main_gallery figure,.ch_gallery figure{width:200px;text-align:center;margin:0;}
 .main_gallery img,.ch_gallery img{max-width:100%;border-radius:8px;display:block}
 
-/* ===== MOBILE / TABLET ===== */
+
 @media (max-width:900px){
 
-  /* 1) Порядок блоків на мобільному:
-     header → asideLong (меню) → asideTop → main → aside → footband → footer */
+
+
   .grid{
     grid-template-columns: 1fr;
-    grid-template-rows: auto; /* рядки ростуть за контентом */
+    grid-template-rows: auto; 
     grid-template-areas:
       "header"
-      "asideLong"  /* МЕНЮ ПЕРШИМ */
+      "asideLong"  
       "asideTop"
       "main"
       "aside"
       "footband"
       "footer";
     gap: 8px;
-    /* якщо є внутрішні падінги - залиш як було у тебе */
   }
 
-  /* 2) Бейджі переносяться на новий ряд, щоб не тиснули текст */
+
   .header, .footer{
     grid-template-columns: 1fr;
     row-gap: 8px;
@@ -144,17 +143,17 @@ html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto
     font-size: clamp(14px, 3.8vw, 16px);
   }
 
-  /* 3) Трохи щільніше падінги усередині блоків */
+
   .main{ padding: 14px; }
   .asideTop, .asideLong, .aside, .footband{ padding: 10px; }
 
-  /* 4) Галерея адаптивно перекладається в кілька колонок */
+
   .main_gallery, .ch_gallery{
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 14px;
   }
   .main_gallery figure, .ch_gallery figure{ width: auto; }
 
-  /* 5) Щоб бейдж не виходив за ширину */
   :root{ --badge-w: 100%; }
+
 }
